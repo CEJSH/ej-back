@@ -1,17 +1,17 @@
-import styled from '@emotion/styled'
-import { css } from '@emotion/react'
+import dynamic from 'next/dynamic'
+import Account from '@components/home/Account'
+import { BannerSkeleton } from '@components/home/EventBanners'
+
+const EventBanners = dynamic(() => import('@components/home/EventBanners'), {
+  ssr: false,
+  loading: () => <BannerSkeleton />,
+})
 
 export default function Home() {
   return (
-    <Container>
-      <div css={bold}>Hello</div>
-    </Container>
+    <>
+      <EventBanners />
+      <Account />
+    </>
   )
 }
-
-const Container = styled.div`
-  background-color: pink;
-`
-const bold = css`
-  font-weight: bold;
-`
