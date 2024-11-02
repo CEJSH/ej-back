@@ -55,7 +55,7 @@ export default function Account() {
           alt=""
           width={80}
           height={80}
-          src="https://cdn4.iconfinder.com/data/icons/business-and-finance-colorful-free-hand-drawn-set/100/money_dollars-64.png"
+          src="https://cdn4.iconfinder.com/data/icons/business-and-finance-colorful-free-hand-drawn-set/100/money_dollars-512.png"
         />
       </Flex>
     </div>
