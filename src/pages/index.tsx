@@ -3,6 +3,7 @@ import Account from '@components/home/Account'
 import { BannerSkeleton } from '@components/home/EventBanners'
 import { CreditScoreSkeleton } from '@components/home/CreditScore'
 import Spacing from '@shared/Spacing'
+import { CardListSkeleton } from '@components/home/CardList'
 
 const CreditScore = dynamic(() => import('@components/home/CreditScore'), {
   ssr: false,
@@ -14,6 +15,11 @@ const EventBanners = dynamic(() => import('@components/home/EventBanners'), {
   loading: () => <CreditScoreSkeleton />,
 })
 
+const CardList = dynamic(() => import('@components/home/CardList'), {
+  ssr: false,
+  loading: () => <CardListSkeleton />,
+})
+
 export default function Home() {
   return (
     <>
@@ -21,6 +27,8 @@ export default function Home() {
       <Account />
       <Spacing size={8} backgroundColor="gray100" />
       <CreditScore />
+      <Spacing size={8} backgroundColor="gray100" />
+      <CardList />
     </>
   )
 }
