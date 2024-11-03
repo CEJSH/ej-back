@@ -6,6 +6,7 @@ import { SessionProvider } from 'next-auth/react'
 import { QueryClientProvider, QueryClient, Hydrate } from 'react-query'
 import AuthGard from '@components/auth/AuthGard'
 import Navbar from '@shared/Navbar'
+import { AlertContextProvider } from '@context/AlertContext'
 
 const client = new QueryClient()
 
@@ -18,12 +19,14 @@ export default function App({
       <Global styles={globalStyles} />
       <SessionProvider session={session}>
         <QueryClientProvider client={client}>
-          <Hydrate state={dehydratedState}>
-            <AuthGard>
-              <Navbar />
-              <Component {...pageProps} />
-            </AuthGard>
-          </Hydrate>
+          <AlertContextProvider>
+            <Hydrate state={dehydratedState}>
+              <AuthGard>
+                <Navbar />
+                <Component {...pageProps} />
+              </AuthGard>
+            </Hydrate>
+          </AlertContextProvider>
         </QueryClientProvider>
       </SessionProvider>
     </Layout>
