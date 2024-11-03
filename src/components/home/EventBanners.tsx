@@ -7,7 +7,7 @@ import Image from 'next/image'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 import useEventBanners from './hooks/useEventBanners'
-import withSuspense from '@shared/hocs/withSuspense'
+import withSuspense from '@/hooks/withSuspense'
 
 function EventBanners() {
   const { data } = useEventBanners()

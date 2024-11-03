@@ -1,6 +1,6 @@
 import { signOut } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import withAuth from '@shared/hocs/withAuth'
+import withAuth from '@/hooks/withAuth'
 
 import Flex from '@shared/Flex'
 import Spacing from '@shared/Spacing'

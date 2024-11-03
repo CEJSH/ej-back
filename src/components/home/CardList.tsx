@@ -1,4 +1,4 @@
-import withSuspense from '@shared/hocs/withSuspense'
+import withSuspense from '@/hooks/withSuspense'
 import ListRow from '@shared/ListRow'
 import Text from '@shared/Text'
 import Badge from '@shared/Badge'
