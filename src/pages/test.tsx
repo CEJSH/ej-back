@@ -5,7 +5,7 @@ import EventForm from '@components/test/EventForm'
 import Flex from '@shared/Flex'
 import Text from '@shared/Text'
 import Spacing from '@shared/Spacing'
-// import TransactionForm from '@components/test/TransactionForm'
+import TransactionForm from '@components/test/TransactionForm'
 
 function TestPage() {
   return (
@@ -35,7 +35,7 @@ function TestPage() {
       />
 
       <Text bold={true}>입출금 테스트</Text>
-      {/* <TransactionForm /> */}
+      <TransactionForm />
 
       <Spacing
         size={8}
