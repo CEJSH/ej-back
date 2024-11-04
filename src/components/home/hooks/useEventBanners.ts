@@ -1,13 +1,17 @@
 import { useQuery } from 'react-query'
 
 import { getEventBanners } from '@remote/banner'
+import useAccount from '@hooks/useAccount'
 
 export default function useEventBanners() {
-  //todo user가 계좌를 보유하고있는가?
+  const { data: account } = useAccount()
 
   return useQuery(
     ['event-banners'],
-    () => getEventBanners({ hasAccount: false }),
+    () =>
+      getEventBanners({
+        hasAccount: account != null && account.status === 'DONE',
+      }),
     {
       suspense: true,
     },

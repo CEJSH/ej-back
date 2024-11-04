@@ -4,7 +4,11 @@ import { BannerSkeleton } from '@components/home/EventBanners'
 import { CreditScoreSkeleton } from '@components/home/CreditScore'
 import Spacing from '@shared/Spacing'
 import { CardListSkeleton } from '@components/home/CardList'
-import { useSession } from 'next-auth/react'
+import { getSession, useSession } from 'next-auth/react'
+import { GetServerSidePropsContext } from 'next'
+import { dehydrate, QueryClient } from 'react-query'
+import { User } from 'next-auth'
+import { getAccount } from '@remote/account'
 
 const CreditScore = dynamic(() => import('@components/home/CreditScore'), {
   ssr: false,
@@ -34,4 +38,27 @@ export default function Home() {
       <CardList />
     </>
   )
+}
+
+// account컴포넌트가 가장 중요하게 고려되므로 서버사이드 단계에서 미리 계좌정보 호출을 하면 좋겠다고 판단 됨
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const session = await getSession(context)
+
+  if (session != null && session.user != null) {
+    const client = new QueryClient()
+
+    await client.prefetchQuery(['account', (session.user as User)?.id], () =>
+      getAccount((session.user as User)?.id),
+    )
+
+    return {
+      props: {
+        dehydratedState: JSON.parse(JSON.stringify(dehydrate(client))),
+      },
+    }
+  }
+
+  return {
+    props: {},
+  }
 }
