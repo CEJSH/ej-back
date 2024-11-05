@@ -6,6 +6,7 @@ import Flex from '@shared/Flex'
 import Spacing from '@shared/Spacing'
 import Button from '@shared/Button'
 import ListRow from '@shared/ListRow'
+import { css } from '@emotion/react'
 
 function MyPage() {
   const navigate = useRouter()
@@ -24,6 +25,7 @@ function MyPage() {
       />
       <ul>
         <ListRow
+          style={listStyles}
           contents={<ListRow.Texts title="약관" subTitle="약관목록 및 철회" />}
           withArrow={true}
           onClick={() => {
@@ -36,3 +38,7 @@ function MyPage() {
 }
 
 export default withAuth(MyPage)
+
+const listStyles = css`
+  cursor: pointer;
+`
