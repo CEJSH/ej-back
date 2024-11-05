@@ -7,11 +7,17 @@ const MonthlyChart = dynamic(() => import('@components/account/MonthlyChart'))
 const CategoryPieChart = dynamic(
   () => import('@components/account/CategoryPieChart'),
 )
-
+const PiggybankRow = dynamic(() => import('@components/account/PiggybankRow'))
 function AccountPage() {
   return (
     <div>
       <MonthlyChart chartData={generateMonthlyChartData()} />
+      <Spacing
+        size={8}
+        backgroundColor="gray100"
+        style={{ margin: '20px 0px' }}
+      />
+      <PiggybankRow />
       <Spacing
         size={8}
         backgroundColor="gray100"
