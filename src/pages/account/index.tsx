@@ -1,13 +1,28 @@
+import Spacing from '@shared/Spacing'
 import withAuth from '@hooks/withAuth'
 import dynamic from 'next/dynamic'
 
 const Transaction = dynamic(() => import('@components/account/Transaction'))
 const MonthlyChart = dynamic(() => import('@components/account/MonthlyChart'))
+const CategoryPieChart = dynamic(
+  () => import('@components/account/CategoryPieChart'),
+)
 
 function AccountPage() {
   return (
     <div>
       <MonthlyChart chartData={generateMonthlyChartData()} />
+      <Spacing
+        size={8}
+        backgroundColor="gray100"
+        style={{ margin: '20px 0px' }}
+      />
+      <CategoryPieChart chartData={generatePieChartData()} />
+      <Spacing
+        size={8}
+        backgroundColor="gray100"
+        style={{ margin: '20px 0px' }}
+      />
       <Transaction />
     </div>
   )
@@ -15,7 +30,7 @@ function AccountPage() {
 export default withAuth(AccountPage)
 
 function generatePieChartData() {
-  return ['카페', '쇼핑', '여행', '커피'].map((label) => ({
+  return ['카페', '쇼핑', '여행', '문화'].map((label) => ({
     label,
     amount: Math.floor(Math.random() * (100000 - 10000 + 1)) + 10000,
   }))
