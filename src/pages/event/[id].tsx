@@ -36,7 +36,7 @@ function EventPage({ id, initialEvent }: EventPageProps) {
     return null
   }
 
-  return <Preview data={initialEvent} />
+  return <Preview data={initialEvent} mode="preview" />
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
