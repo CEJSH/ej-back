@@ -8,6 +8,7 @@ import Image from 'next/image'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import useEventBanners from './hooks/useEventBanners'
 import withSuspense from '@/hooks/withSuspense'
+import ErrorBoundary from '@shared/ErrorBoundary'
 
 function EventBanners() {
   const { data } = useEventBanners()
@@ -42,7 +43,7 @@ function EventBanners() {
   )
 }
 
-export default withSuspense(EventBanners, {
+export default withSuspense(WrapErrorBoundary, {
   fallback: <BannerSkeleton />,
 })
 
@@ -55,5 +56,17 @@ export function BannerSkeleton() {
     <div style={{ padding: 24 }}>
       <Skeleton width={'100%'} height={100} style={{ borderRadius: 8 }} />
     </div>
+  )
+}
+
+function WrapErrorBoundary() {
+  return (
+    <ErrorBoundary
+      fallbackComponent={
+        <div style={{ padding: 24 }}>이벤트 배너에 문제가 생겼어요</div>
+      }
+    >
+      <EventBanners />
+    </ErrorBoundary>
   )
 }

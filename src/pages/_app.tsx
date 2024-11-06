@@ -4,9 +4,9 @@ import { Global } from '@emotion/react'
 import Layout from '@shared/Layout'
 import { SessionProvider } from 'next-auth/react'
 import { QueryClientProvider, QueryClient, Hydrate } from 'react-query'
-import AuthGard from '@components/auth/AuthGard'
 import Navbar from '@shared/Navbar'
 import { AlertContextProvider } from '@context/AlertContext'
+import ErrorBoundary from '@shared/ErrorBoundary'
 
 const client = new QueryClient()
 
@@ -19,14 +19,14 @@ export default function App({
       <Global styles={globalStyles} />
       <SessionProvider session={session}>
         <QueryClientProvider client={client}>
-          <AlertContextProvider>
-            <Hydrate state={dehydratedState}>
-              <AuthGard>
+          <ErrorBoundary>
+            <AlertContextProvider>
+              <Hydrate state={dehydratedState}>
                 <Navbar />
                 <Component {...pageProps} />
-              </AuthGard>
-            </Hydrate>
-          </AlertContextProvider>
+              </Hydrate>
+            </AlertContextProvider>
+          </ErrorBoundary>
         </QueryClientProvider>
       </SessionProvider>
     </Layout>
