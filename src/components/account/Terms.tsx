@@ -17,7 +17,6 @@ export default function Terms({
     generateInitialValues(약관목록),
   )
   const handleAgreement = (id: string, checked: boolean) => {
-    console.log(id, checked)
     setTermsAgreements((prevTerms) => {
       return prevTerms.map((term) =>
         term.id === id ? { ...term, checked } : term,

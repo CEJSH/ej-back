@@ -18,7 +18,6 @@ export default function useCreditCheck({
     refetchInterval: 2_000,
     staleTime: 0,
     onSuccess: (status) => {
-      console.log('status', status)
       // 조회성공~!
       if (status === CHECK_STATUS.COMPLETE) {
         onSuccess(getCreditScore(200, 1000))

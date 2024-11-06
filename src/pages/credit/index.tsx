@@ -27,7 +27,6 @@ function CreditPage() {
 
   //서버사이드에서 호출을 하였기때문에 비어있지 않고 바로 차 있을 것이다.
   const { data } = useCredit()
-  console.log('data', data)
 
   const handleCheck = useCallback(() => {
     if (user == null) {

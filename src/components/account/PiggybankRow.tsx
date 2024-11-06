@@ -19,7 +19,6 @@ function PiggybankRow() {
     () => getPiggybank(user?.id as string),
     { suspense: true },
   )
-  console.log(data, 'ddaattaa')
 
   if (data == null) {
     return (

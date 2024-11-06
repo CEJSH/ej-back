@@ -13,8 +13,6 @@ export default function SearchPage() {
   const [keyword, setKeyword] = useState('')
   const debouncedKeyword = useDebounce(keyword)
 
-  console.log('debouncedKeyword', debouncedKeyword)
-
   const navigate = useRouter()
   const inputRef = useRef<HTMLInputElement>(null)
   const { data } = useQuery(

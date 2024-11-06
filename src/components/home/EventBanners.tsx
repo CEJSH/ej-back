@@ -13,7 +13,6 @@ import ErrorBoundary from '@shared/ErrorBoundary'
 function EventBanners() {
   const { data } = useEventBanners()
 
-  console.log('data', data)
   return (
     <div style={{ padding: 24 }}>
       <Swiper spaceBetween={8}>
